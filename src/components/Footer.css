@@ -1,0 +1,98 @@
+﻿.footer {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 48px 0 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  padding-bottom: 40px;
+}
+
+.footer-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
+
+.footer-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 12px;
+}
+
+.footer-item svg {
+  color: var(--primary-light);
+  flex-shrink: 0;
+}
+
+.footer-social {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.footer-social a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(39, 169, 107, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  transition: all 0.3s ease;
+}
+
+.footer-social a:hover {
+  background: var(--primary);
+  color: var(--text);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  border-top: 1px solid var(--border);
+  padding: 20px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+@media (max-width: 768px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ===================== RESPONSIVE MOBILE ===================== */
+@media (max-width: 480px) {
+  .footer {
+    padding: 36px 0 0;
+  }
+  .footer-grid {
+    gap: 24px;
+    padding-bottom: 28px;
+  }
+  .footer-title {
+    font-size: 1rem;
+    margin-bottom: 14px;
+  }
+  .footer-item {
+    font-size: 0.85rem;
+  }
+  .footer-social a {
+    width: 36px;
+    height: 36px;
+  }
+  .footer-bottom {
+    font-size: 0.78rem;
+    padding: 16px 0;
+  }
+}

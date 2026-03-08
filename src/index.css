@@ -1,0 +1,111 @@
+﻿@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap");
+
+:root {
+  --primary: #1B6B4A;
+  --primary-light: #27A96B;
+  --primary-dark: #0F4A30;
+  --accent: #D4A853;
+  --accent-hover: #E0BB6E;
+  --bg-dark: #0F1A14;
+  --bg-card: #162B1F;
+  --bg-card-hover: #1C3627;
+  --text: #F0F5F2;
+  --text-muted: #8BA898;
+  --border: rgba(39, 169, 107, 0.2);
+  --shadow: rgba(0, 0, 0, 0.3);
+  --font-family: "Outfit", sans-serif;
+  --radius: 12px;
+  --radius-sm: 8px;
+  --radius-lg: 16px;
+  --transition: 0.3s ease;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body { font-family: var(--font-family); background-color: var(--bg-dark); color: var(--text); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+a { text-decoration: none; color: inherit; transition: color var(--transition); }
+ul, ol { list-style: none; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-family); cursor: pointer; border: none; outline: none; }
+h1, h2, h3, h4, h5, h6 { line-height: 1.2; font-weight: 700; }
+.container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section { padding: 80px 0; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 28px; border-radius: var(--radius-sm); font-size: 0.95rem; font-weight: 600; transition: all var(--transition); letter-spacing: 0.3px; position: relative; overflow: hidden; }
+.btn::after { content: ""; position: absolute; top: 0; left: -100%; width: 60%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent); transform: skewX(-15deg); transition: none; }
+.btn:hover::after { animation: shimmer 0.6s ease forwards; }
+.btn-primary { background: var(--accent); color: var(--bg-dark); }
+.btn-primary:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(212,168,83,0.3); }
+.btn-outline { background: transparent; color: var(--text); border: 2px solid var(--text); }
+.btn-outline:hover { background: rgba(240,245,242,0.1); transform: translateY(-2px); }
+.btn-accent-outline { background: transparent; color: var(--accent); border: 2px solid var(--accent); }
+.btn-accent-outline:hover { background: rgba(212,168,83,0.1); transform: translateY(-2px); }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--primary-light); }
+
+/* ============================================================
+   KEYFRAMES
+   ============================================================ */
+@keyframes fadeInUp   { from { opacity:0; transform:translateY(40px); } to { opacity:1; transform:translateY(0); } }
+@keyframes fadeIn     { from { opacity:0; } to { opacity:1; } }
+@keyframes slideInLeft  { from { opacity:0; transform:translateX(-60px); } to { opacity:1; transform:translateX(0); } }
+@keyframes slideInRight { from { opacity:0; transform:translateX(60px);  } to { opacity:1; transform:translateX(0); } }
+@keyframes zoomIn     { from { opacity:0; transform:scale(0.85); } to { opacity:1; transform:scale(1); } }
+@keyframes float      { 0%,100%{ transform:translateY(0);    } 50%{ transform:translateY(-18px); } }
+@keyframes floatAlt   { 0%,100%{ transform:translateY(0) rotate(0deg); } 50%{ transform:translateY(-12px) rotate(5deg); } }
+@keyframes shimmer    { 0%{ transform:translateX(-100%) skewX(-15deg); } 100%{ transform:translateX(250%) skewX(-15deg); } }
+@keyframes glowPulse  { 0%,100%{ box-shadow:0 0 0 0 rgba(212,168,83,0.5); } 50%{ box-shadow:0 0 0 12px rgba(212,168,83,0); } }
+@keyframes glowPulseGreen { 0%,100%{ box-shadow:0 0 0 0 rgba(27,107,74,0.5); } 50%{ box-shadow:0 0 0 14px rgba(27,107,74,0); } }
+@keyframes bounceIcon { 0%,100%{ transform:translateY(0) scale(1); } 40%{ transform:translateY(-10px) scale(1.15); } 70%{ transform:translateY(-4px) scale(1.05); } }
+@keyframes slideStepIn { from{ opacity:0; transform:translateX(40px); } to{ opacity:1; transform:translateX(0); } }
+@keyframes rotateSpin { from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+
+/* ============================================================
+   SCROLL-TRIGGERED UTILITIES  (used with useInView hook)
+   ============================================================ */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.65s ease, transform 0.65s cubic-bezier(0.25,0.46,0.45,0.94);
+}
+.animate-on-scroll.slide-up    { transform: translateY(50px); }
+.animate-on-scroll.slide-left  { transform: translateX(-60px); }
+.animate-on-scroll.slide-right { transform: translateX(60px); }
+.animate-on-scroll.zoom-in     { transform: scale(0.85); }
+.animate-on-scroll.in-view     { opacity: 1; transform: none; }
+
+/* Stagger delays */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+/* Legacy  kept for backward compat */
+.fade-in-up { animation: fadeInUp 0.6s ease forwards; }
+.fade-in    { animation: fadeIn   0.6s ease forwards; }
+
+/* ===================== MOBILE GLOBAL UTILITIES ===================== */
+/* Touch action: tombol lebih mudah di-tap di HP */
+button, a, [role="button"] {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+}
+
+/* Minimal tap target size untuk mobile (44px recommended by Apple/Google) */
+.btn {
+  min-height: 44px;
+}
+
+/* Pastikan section padding lebih kecil di mobile */
+@media (max-width: 768px) {
+  .section { padding: 60px 0; }
+  .container { padding: 0 16px; }
+}
+
+@media (max-width: 480px) {
+  .section { padding: 48px 0; }
+  .container { padding: 0 14px; }
+  html { font-size: 15px; }
+}

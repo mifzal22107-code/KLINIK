@@ -1,0 +1,85 @@
+﻿.manfaat-section {
+  background-color: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.manfaat-header {
+  text-align: center;
+  margin-bottom: 52px;
+}
+.manfaat-title {
+  font-size: 2.2rem; color: var(--text); margin-bottom: 12px;
+}
+.manfaat-subtitle {
+  font-size: 1rem; color: var(--text-muted); font-weight: 300;
+}
+.manfaat-grid {
+  display: grid;
+  grid-template-columns: repeat(4,1fr);
+  gap: 24px;
+}
+.manfaat-card {
+  background: var(--bg-dark);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 36px 24px;
+  text-align: center;
+  transition: all 0.35s cubic-bezier(0.25,0.46,0.45,0.94);
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+.manfaat-card::before {
+  content: "";
+  position: absolute; top:0; left:0; right:0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-light), var(--accent));
+  transform: scaleX(0);
+  transition: transform 0.35s ease;
+  transform-origin: left;
+}
+.manfaat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.45), 0 0 0 1px rgba(212,168,83,0.2);
+  border-color: rgba(212,168,83,0.3);
+}
+.manfaat-card:hover::before { transform: scaleX(1); }
+.manfaat-icon {
+  width: 68px; height: 68px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  background: rgba(212,168,83,0.1);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  transition: all 0.35s ease;
+}
+.manfaat-card:hover .manfaat-icon {
+  background: var(--accent);
+  color: var(--bg-dark);
+  animation: bounceIcon 0.5s ease forwards;
+}
+.manfaat-card h3 {
+  font-size: 1.1rem; color: var(--text); font-weight: 600; margin-bottom: 10px;
+}
+.manfaat-desc {
+  font-size: 0.88rem; color: var(--text-muted); line-height: 1.6;
+}
+@media (max-width: 992px) { .manfaat-grid { grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 576px) { .manfaat-grid { grid-template-columns: 1fr; } }
+
+/* ===================== RESPONSIVE MOBILE ===================== */
+@media (max-width: 480px) {
+  .manfaat-title {
+    font-size: 1.7rem;
+  }
+  .manfaat-subtitle {
+    font-size: 0.9rem;
+    padding: 0 8px;
+  }
+  .manfaat-card {
+    padding: 28px 18px;
+  }
+  .manfaat-header {
+    margin-bottom: 36px;
+  }
+}
